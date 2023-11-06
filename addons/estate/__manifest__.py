@@ -22,9 +22,9 @@
     #     'digest',
     #     'phone_validation',
     ],
-    # 'data': [
+    'data': [
     #     'security/crm_security.xml',
-    #     'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
 
     #     'data/crm_lead_prediction_data.xml',
     #     'data/crm_lost_reason_data.xml',
@@ -40,7 +40,8 @@
     #     'wizard/crm_merge_opportunities_views.xml',
 
     #     'views/assets.xml',
-    #     'views/calendar_views.xml',
+          'views/estate_property_views.xml',
+          'menus/estates_menu.xml',
     #     'views/crm_recurring_plan_views.xml',
     #     'views/crm_menu_views.xml',
     #     'views/crm_lost_reason_views.xml',
@@ -54,7 +55,7 @@
     #     'report/crm_activity_report_views.xml',
     #     'report/crm_opportunity_report_views.xml',
     #     'views/crm_team_views.xml',
-    # ],
+    ],
     # 'demo': [
     #     'data/crm_team_demo.xml',
     #     'data/mail_activity_demo.xml',
