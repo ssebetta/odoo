@@ -30,30 +30,6 @@
             <form string="Property Type">
                 <sheet string="Property Type">
                     <field name="name" class="mb32" placeholder="Name"/>
-                    <!-- <group>
-                        <group>
-                            <field name="postcode" class="oe_inline" placeholder="Postcode"/>
-                            <field name="expected_price" class="oe_inline"/>
-                        </group>
-                        <group>
-                            <field name="date_availability" class="oe_inline" string="Available From"/>
-                            <field name="selling_price" class="oe_inline"/>
-                        </group>
-                    </group>
-                    <notebook>
-                        <page string="Description">
-                            <group>
-                                <field name="description" class="oe_inline" placeholder="Description"/>
-                                 <field name="bedrooms" class="oe_inline"/>
-                                 <field name="living_area" class="oe_inline"/>
-                                 <field name="facades" class="oe_inline"/>
-                                 <field name="garage" class="oe_inline"/>
-                                 <field name="garden" class="oe_inline"/>
-                                 <field name="garden_area" class="oe_inline"/>
-                                 <field name="garden_orientation" class="oe_inline" placeholder="Select"/>
-                            </group>
-                        </page>
-                    </notebook> -->
                 </sheet>
             </form>
         </field>

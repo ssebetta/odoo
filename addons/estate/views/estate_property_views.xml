@@ -78,6 +78,11 @@
                                  <field name="garden_orientation" class="oe_inline" placeholder="Select"/>
                             </group>
                         </page>
+                        <page string="Offers">
+                            <group>
+                                <field name="offer_ids" class="oe_inline"/>
+                            </group>
+                        </page>
                         <page string="Other Info">
                             <group>
                                 <field name="partner_id" class="oe_inline" placeholder="Select"/>

@@ -32,3 +32,4 @@ class EstateProperty(models.Model):
         default=lambda self: self.env.user
     )
     tag_ids = fields.Many2many("estate_property_tags", string="Tags")
+    offer_ids = fields.One2many("estate_property_offers", "property_id")
