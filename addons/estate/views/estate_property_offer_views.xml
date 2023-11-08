@@ -7,6 +7,8 @@
             <tree>
                 <field name="price"/>
                 <field name="partner_id"/>
+                <field name="validity"/>
+                <field name="date_deadline"/>
                 <field name="status"/>
             </tree>
         </field>
@@ -20,6 +22,8 @@
                     <group>
                         <field name="partner_id" class="oe_inline" placeholder="search"/>
                         <field name="price" class="oe_inline"/>
+                        <field name="validity" class="oe_inline"/>
+                        <field name="date_deadline" class="oe_inline"/>
                         <field name="status" class="oe_inline" placeholder="optional"/>
                     </group>
                 </sheet>

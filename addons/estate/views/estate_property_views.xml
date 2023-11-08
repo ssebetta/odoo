@@ -58,10 +58,11 @@
                         <group>
                             <field name="property_type_id" class="oe_inline" placeholder="Select"/>
                             <field name="postcode" class="oe_inline" placeholder="Postcode"/>
-                            <field name="expected_price" class="oe_inline"/>
+                            <field name="date_availability" class="oe_inline" string="Available From"/>
                         </group>
                         <group>
-                            <field name="date_availability" class="oe_inline" string="Available From"/>
+                            <field name="best_price" class="oe_inline" string="Best Offer"/>
+                            <field name="expected_price" class="oe_inline"/>
                             <field name="selling_price" class="oe_inline"/>
                         </group>
                     </group>
@@ -70,12 +71,13 @@
                             <group>
                                 <field name="description" class="oe_inline" placeholder="Description"/>
                                  <field name="bedrooms" class="oe_inline"/>
-                                 <field name="living_area" class="oe_inline"/>
+                                 <field name="living_area" class="oe_inline" string="Living Area (sqm)"/>
                                  <field name="facades" class="oe_inline"/>
                                  <field name="garage" class="oe_inline"/>
                                  <field name="garden" class="oe_inline"/>
-                                 <field name="garden_area" class="oe_inline"/>
+                                 <field name="garden_area" class="oe_inline" string="Garden Area (sqm)"/>
                                  <field name="garden_orientation" class="oe_inline" placeholder="Select"/>
+                                 <field name="total_area" class="oe_inline" string="Total Area (sqm)"/>
                             </group>
                         </page>
                         <page string="Offers">
