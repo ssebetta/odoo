@@ -41,6 +41,8 @@
 
     #     'views/assets.xml',
           'views/estate_property_views.xml',
+          'views/estate_property_type_views.xml',
+          'views/estate_property_tag_views.xml',
           'menus/estates_menu.xml',
     #     'views/crm_recurring_plan_views.xml',
     #     'views/crm_menu_views.xml',
