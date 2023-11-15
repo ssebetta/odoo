@@ -51,11 +51,16 @@
         <field name="model">estate_property</field>
         <field name="arch" type="xml">
             <form string="My new house">
+                <header>
+                    <button name="action_sell_property" type="object" string="Sold"/>
+                    <button name="action_cancel_offer" type="object" string="Cancel"/>
+                </header>
                 <sheet string="My new house">
                     <field name="name" class="mb32" placeholder="Name"/>
                     <field name="tag_ids" widget="many2many_tags" placeholder="Tags"/>
                     <group>
                         <group>
+                            <field name="state" class="oe_inline"/>
                             <field name="property_type_id" class="oe_inline" placeholder="Select"/>
                             <field name="postcode" class="oe_inline" placeholder="Postcode"/>
                             <field name="date_availability" class="oe_inline" string="Available From"/>

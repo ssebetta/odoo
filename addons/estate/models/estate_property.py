@@ -1,5 +1,6 @@
 from datetime import timedelta
-from odoo import api, fields, models
+from odoo import api, fields, models, _
+from odoo.exceptions import UserError, ValidationError
 
 class EstateProperty(models.Model):
     _name = 'estate_property'
@@ -22,6 +23,16 @@ class EstateProperty(models.Model):
         selection=[('north', 'North'),('south', 'South'),('east', 'East'),('west', 'West')]
     )
     active = fields.Boolean()
+    state = fields.Selection(
+        string='Status',
+        selection=[
+            ('new', 'New'),
+            ('offer_received', 'Offer Received'),
+            ('offer_accepted', 'Offer Accepted'),
+            ('sold', 'Sold'),
+            ('canceled', 'Canceled'),],
+        default='new'
+    )
     property_type_id = fields.Many2one("estate_property_type", string="Property Type")
     partner_id = fields.Many2one("res.partner", string="Buyer")
     user_id = fields.Many2one(
@@ -54,3 +65,16 @@ class EstateProperty(models.Model):
         else:
             self.garden_area = 0
             self.garden_orientation = ''
+
+    def action_cancel_offer(self):
+        for record in self:
+            record.state = "canceled"
+        return True
+    
+    def action_sell_property(self):
+        for record in self:
+            if record.state != "canceled": 
+                record.state = "sold"
+            else:
+                raise UserError(_('Canceled properties cannot be sold'))
+        return True

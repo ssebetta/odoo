@@ -1,5 +1,6 @@
 from datetime import timedelta, datetime
-from odoo import api, fields, models
+from odoo import api, fields, models, _
+from odoo.exceptions import UserError, ValidationError
 
 class EstatePropertyOffer(models.Model):
     _name="estate_property_offers"
@@ -8,7 +9,8 @@ class EstatePropertyOffer(models.Model):
     price = fields.Float()
     status = fields.Selection(
         string='Status',
-        selection=[('accepted', 'Accepted'),('refused', 'Refused')],
+        selection=[('new', 'New'),('accepted', 'Accepted'),('refused', 'Refused')],
+        default="new",
         copy=False
     )
     partner_id = fields.Many2one("res.partner", required=True, string="Potential Buyer")
@@ -37,3 +39,21 @@ class EstatePropertyOffer(models.Model):
                 record.validity = abs((
                     datetime.strptime(d3.strftime("%Y-%m-%d"), "%Y-%m-%d") - \
                         datetime.strptime(d2.strftime("%Y-%m-%d"), "%Y-%m-%d")).days)
+    
+    def action_confirm(self):
+        for record in self:
+            if not record.property_id.selling_price:
+                record.status = "accepted"
+                record.property_id.selling_price = record.price
+                record.property_id.partner_id = record.partner_id
+            else:
+                raise UserError(_('An offer was already accepted.'))
+        return True
+    
+    def action_refuse(self):
+        for record in self:
+            record.status = "refused"
+            if record.property_id.partner_id == record.partner_id:
+                record.property_id.selling_price = 0.00
+                record.property_id.partner_id = None
+        return True
