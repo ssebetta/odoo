@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="estate_property_action" model="ir.actions.act_window">
+        <field name="name">Properties</field>
+        <field name="res_model">estate_property</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="estate_property_view_tree" model="ir.ui.view">
+        <field name="name">estate_property.tree</field>
+        <field name="model">estate_property</field>
+        <field name="arch" type="xml">
+            <tree string="Properties">
+                <field name="name"/>
+                <field name="postcode"/>
+                <field name="bedrooms"/>
+                <field name="living_area"/>
+                <field name="expected_price"/>
+                <field name="selling_price"/>
+                <field name="date_availability"/>
+                <field name="property_type_id"/>
+                <field name="user_id"/>
+                <field name="partner_id"/>
+                <field name="tag_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+    <record id="estate_property_view_search" model="ir.ui.view">
+        <field name="name">estate_property.view.search</field>
+        <field name="model">estate_property</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="name"/>
+                <field name="postcode"/>
+                <field name="expected_price"/>
+                <field name="bedrooms"/>
+                <field name="living_area"/>
+                <field name="facades"/>
+                <separator/>
+                <filter string="Active" name="active" domain="['|', ('active', '=', True), ('active', '=', 'False')]"/>
+                <group expand="1" string="Group By">
+                    <filter string="Bedrooms" name="bedrooms" context="{'group_by':'bedrooms', 'residual_visible':True}"/>
+                    <filter string="Poperty Type" name="property_type_id" context="{'group_by':'property_type_id', 'residual_visible':True}"/>
+                    <filter string="Sales Person" name="user_id" context="{'group_by':'user_id', 'residual_visible':True}"/>
+                    <filter string="Tag" name="tag_ids" context="{'group_by':'tag_ids', 'residual_visible':True}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="estate_property_view_form" model="ir.ui.view">
+        <field name="name">estate_property.form</field>
+        <field name="model">estate_property</field>
+        <field name="arch" type="xml">
+            <form string="My new house">
+                <header>
+                    <button name="action_sell_property" type="object" string="Sold"/>
+                    <button name="action_cancel_offer" type="object" string="Cancel"/>
+                </header>
+                <sheet string="My new house">
+                    <field name="name" class="mb32" placeholder="Name"/>
+                    <field name="tag_ids" widget="many2many_tags" placeholder="Tags"/>
+                    <group>
+                        <group>
+                            <field name="state" class="oe_inline"/>
+                            <field name="property_type_id" class="oe_inline" placeholder="Select"/>
+                            <field name="postcode" class="oe_inline" placeholder="Postcode"/>
+                            <field name="date_availability" class="oe_inline" string="Available From"/>
+                        </group>
+                        <group>
+                            <field name="best_price" class="oe_inline" string="Best Offer"/>
+                            <field name="expected_price" class="oe_inline"/>
+                            <field name="selling_price" class="oe_inline"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <group>
+                                <field name="description" class="oe_inline" placeholder="Description"/>
+                                 <field name="bedrooms" class="oe_inline"/>
+                                 <field name="living_area" class="oe_inline" string="Living Area (sqm)"/>
+                                 <field name="facades" class="oe_inline"/>
+                                 <field name="garage" class="oe_inline"/>
+                                 <field name="garden" class="oe_inline"/>
+                                 <field name="garden_area" class="oe_inline" string="Garden Area (sqm)"/>
+                                 <field name="garden_orientation" class="oe_inline" placeholder="Select"/>
+                                 <field name="total_area" class="oe_inline" string="Total Area (sqm)"/>
+                            </group>
+                        </page>
+                        <page string="Offers">
+                            <group>
+                                <field name="offer_ids" class="oe_inline"/>
+                            </group>
+                        </page>
+                        <page string="Other Info">
+                            <group>
+                                <field name="partner_id" class="oe_inline" placeholder="Select"/>
+                                 <field name="user_id" class="oe_inline" placeholder="Select"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
